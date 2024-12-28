@@ -13,4 +13,19 @@ stages:
     jobs:
       - job: initplan
         steps:
-        
+        - task: PowerShell@2
+          inputs:
+            targetType: 'inline'
+            script: |
+              # Export environment variables for Terraform
+                        export ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+            backendServiceArm: 'pkagent'
+            backendAzureRmResourceGroupName: 'dev-rg1'
+            backendAzureRmStorageAccountName: 'devstgacbk01'
+            backendAzureRmContainerName: 'devcont'
+            backendAzureRmKey: 'dev.terraform.tfstate'
