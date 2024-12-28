@@ -25,8 +25,8 @@ stages:
             targetType: 'inline'
             script: |
               echo "Setting ARM_SUBSCRIPTION_ID environment variable"
-              env:ARM_SUBSCRIPTION_ID = "$(ARM_SUBSCRIPTION_ID)"
-              Write-Host "ARM_SUBSCRIPTION_ID set successfully."
+              env:ARMSUBSCRIPTIONID = "$(ARMSUBSCRIPTIONID)"
+              Write-Host "ARMSUBSCRIPTIONID set successfully."
 
         # Step 2: Terraform Init
         - task: TerraformTaskV4@4
