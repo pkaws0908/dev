@@ -8,8 +8,8 @@ pool:
 
 variables:
 - group: subscription # Variable group containing ARM_SUBSCRIPTION_ID and other secrets
-- name: ARM_SUBSCRIPTION_ID
-  value: $[variables.ARM_SUBSCRIPTION_ID]
+- name: ARM-SUBSCRIPTION-ID
+  value: $[variables.ARMSUBSCRIPTIONID]
 
 stages:
   - stage: initandplan
