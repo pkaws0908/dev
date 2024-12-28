@@ -48,4 +48,4 @@ stages:
             provider: 'azurerm'
             command: 'plan'
             workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
-            commandOptions: '-out=tfplan'
+            environmentServiceNameAzureRM: 'pkagent'
