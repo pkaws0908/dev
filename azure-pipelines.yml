@@ -49,3 +49,25 @@ stages:
             command: 'plan'
             workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
             environmentServiceNameAzureRM: 'pkagent'
+
+        # step 4: Manuall intervention
+  - stage: Terraformapply
+    displayName: terraform apply
+    jobs:
+      - job: malualapprovaljob
+        displayName: manual approval job
+        pool: server
+        steps:
+        - task: ManualValidation@1
+          inputs:
+            notifyUsers: 'prashant@gmail.com'
+            instructions: 'Kindly approve'
+      - job: terraformapply
+        displayName: terraform apply
+        steps:
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'azurerm'
+            command: 'apply'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+            environmentServiceNameAzureRM: 'pkagent'
