@@ -1,0 +1,16 @@
+trigger:
+ branches:
+   include:
+     - master
+pool: pkdgpool
+
+variables:
+- group: subscription
+- name: ARM_SUBSCRIPTION_ID
+  value: $(ARM_SUBSCRIPTION_ID)
+stages:
+  - stage: initandplan
+    jobs:
+      - job: initplan
+        steps:
+        
