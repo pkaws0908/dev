@@ -15,6 +15,10 @@ stages:
   - stage: initandplan
     displayName: "Terraform Init and Plan"
     jobs:
+      - job: tfsecscan
+        displayName: tfsec scan
+        steps:
+        
       - job: initplan
         displayName: "Initialize and Plan Terraform"
         steps:
